@@ -6,23 +6,41 @@
     font-family:'Roboto';
     font-style: normal;
     src:
-      local('Roboto'),          // Erst nachsehen, ob die Schrift
-      local('Roboto-Regular'),  // beim Besucher schon installiert ist
-      url(https://fonts.google.com/specimen/Roboto) format('woff2'), // Wenn nicht, wird die Schrift vom Webserver geladen
-      url(https://fonts.google.com/specimen/Roboto) format('woff');   // Am Ende das Schlusslicht für IE11
+      local('Roboto');          // Erst nachsehen, ob die Schrift
+      local('Roboto-Regular'); // beim Besucher schon installiert ist
+      url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2'); // Wenn nicht, wird die Schrift vom Webserver geladen
 
 /* Quelle: https://www.mediaevent.de/css/font-face.html */
 
 /*funktioniert irgendwie noch nicht*/
 }
 
+header {
+    position: fixed;
+    width: 100%;
+}
+
+footer {
+    position: absolute;
+    width: 100%;
+}
+
 /*allg vorgaben zur schrift*/
 body {
-  font-family: Roboto;
-  font-size: 14px;
-  line-height: 145%;
-  font-style: normal;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 145%;
+    font-style: normal;
 }
+
+div {
+    border: 1px solid gray;
+    padding: 8px;
+}
+div p {
+    column-width: 320px;
+}
+
 
 a {
   color: #b1b1b1;
