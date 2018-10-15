@@ -3,6 +3,7 @@
 		<head>
 				<meta charset="utf-8"/>
 				<link rel="Stylesheet" type="text/css" href="stylesheet.css"/>
+			<script type="text/javascript" src="script.js"></script>
 		</head>
 		<body>
 				<header>
@@ -19,22 +20,22 @@
 				</div>
 				<p>
 						Show/Hide :
-						<a href="">birth rate</a> |
-						<a href="">cellphones</a> |
-						<a href="">children / woman</a> |
-						<a href="">electric usage</a> |
-						<a href="">internet usage</a>
+						<a href="" onclick="visibilityFct();">birth rate</a> |
+						<a href="" onclick="visibilityFct();">cellphones</a> |
+						<a href="" onclick="visibilityFct();">children / woman</a> |
+						<a href="" onclick="visibilityFct();">electric usage</a> |
+						<a href="" onclick="visibilityFct();">internet usage</a>
 				</p>
 				<table>
 						<thead>
 								<tr>
-										<th>ID</th>
+										<th >ID</th>
 										<th>Country</th>
-										<th>Birth Rate / 1000</th>
-										<th>Cellphones / 100</th>
-										<th>children / woman</th>
-										<th>electric usage</th>
-										<th>internet usage</th>
+										<th id="birthRate">Birth Rate / 1000</th>
+										<th id="cellphones">Cellphones / 100</th>
+										<th id="children">children / woman</th>
+										<th id="electricUsage">electric usage</th>
+										<th id="internetUsage">internet usage</th>
 								</tr>
 						</thead>
 						<tbody>
