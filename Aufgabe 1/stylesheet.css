@@ -1,0 +1,52 @@
+/*------------------------------------------------------
+------------------ Allgemeines--------------------------
+------------------------------------------------------*/
+
+@font-face {
+    font-family:'Roboto';
+    font-style: normal;
+    src:
+      local('Roboto'),          // Erst nachsehen, ob die Schrift
+      local('Roboto-Regular'),  // beim Besucher schon installiert ist
+      url(fonts/roboto-v18-latin-regular.woff2) format('woff2'), // Wenn nicht, wird die Schrift vom Webserver geladen
+      url(fonts/roboto-v18-latin-regular.woff) format('woff');   // Am Ende das Schlusslicht für IE11
+
+/* Quelle: https://www.mediaevent.de/css/font-face.html */
+
+/*funktioniert irgendwie noch nicht*/
+}
+
+/*allg vorgaben zur schrift*/
+body {
+  font-family: Roboto;
+  font-size: 14px;
+  line-height: 145%;
+  font-style: normal;
+}
+
+a {
+  color: #b1b1b1;
+}
+/*änderung des aussehens von links beim hovern*/
+a:hover {
+  text-decoration: none;
+}
+
+
+/*------------------------------------------------------
+------------- Tabellenspezifisches----------------------
+------------------------------------------------------*/
+
+/*zwischen den Boxen werden keine Linien angezeigt*/
+table {
+  border-collapse: collapse;
+}
+/*jede zweite zeile grau*/
+table tr:nth-of-type(even) {
+  background-color: #eeeeee;
+}
+
+th {
+    padding: 10px;
+    padding-right: 40px;
+}
