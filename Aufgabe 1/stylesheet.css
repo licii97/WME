@@ -8,8 +8,8 @@
     src:
       local('Roboto'),          // Erst nachsehen, ob die Schrift
       local('Roboto-Regular'),  // beim Besucher schon installiert ist
-      url(fonts/roboto-v18-latin-regular.woff2) format('woff2'), // Wenn nicht, wird die Schrift vom Webserver geladen
-      url(fonts/roboto-v18-latin-regular.woff) format('woff');   // Am Ende das Schlusslicht für IE11
+      url(https://fonts.google.com/specimen/Roboto) format('woff2'), // Wenn nicht, wird die Schrift vom Webserver geladen
+      url(https://fonts.google.com/specimen/Roboto) format('woff');   // Am Ende das Schlusslicht für IE11
 
 /* Quelle: https://www.mediaevent.de/css/font-face.html */
 
