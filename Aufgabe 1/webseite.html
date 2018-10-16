@@ -11,7 +11,10 @@
 
 				/* Funktion um Tabellenspalten sichtbar und unsichtbar zu machen */
 				function visibilityFct(id) {
-					document.getElementById(id).style.display="none";
+					var liste = document.getElementsByClassName(id);
+					for (var index=0 ; index<liste.length; index++){
+					    liste[index].style.display="none";
+					}
 				}
 			</script>
 
@@ -41,40 +44,40 @@
 								<tr>
 										<th >ID</th>
 										<th>Country</th>
-										<th id="birthRate">Birth Rate / 1000</th>
-										<th id="cellphones">Cellphones / 100</th>
-										<th id="children">children / woman</th>
-										<th id="electricUsage">electric usage</th>
-										<th id="internetUsage">internet usage</th>
+										<th class="birthRate">Birth Rate / 1000</th>
+										<th class="cellphones">Cellphones / 100</th>
+										<th class="children">children / woman</th>
+										<th class="electricUsage">electric usage</th>
+										<th class="internetUsage">internet usage</th>
 								</tr>
 						</thead>
 						<tbody>
 								<tr>
 										<td>1</td>
 										<td>Brazil</td>
-										<td >16.405</td>
-										<td>90.01936334</td>
-										<td>1862</td>
-										<td>2201.808724</td>
-										<td>39.22</td>
+										<td class="birthRate">16.405</td>
+										<td class="cellphones">90.01936334</td>
+										<td class="children">1862</td>
+										<td class="electricUsage">2201.808724</td>
+										<td class="internetUsage">39.22</td>
 								</tr>
 								<tr>
 										<td>2</td>
 										<td>Canada</td>
-										<td>10625</td>
-										<td>70.70997244</td>
-										<td>1668</td>
-										<td>15119.76414</td>
-										<td>80.17086651</td>
+										<td class="birthRate">10625</td>
+										<td class="cellphones">70.70997244</td>
+										<td class="children">1668</td>
+										<td class="electricUsage">15119.76414</td>
+										<td class="internetUsage">80.17086651</td>
 								</tr>
 								<tr>
 										<td>3</td>
 										<td>Chile</td>
-										<td>15.04</td>
-										<td>97.01862561</td>
-										<td>1873</td>
-										<td>3276.06449</td>
-										<td>38.8</td>
+										<td class="birthRate">15.04</td>
+										<td class="cellphones">97.01862561</td>
+										<td class="children">1873</td>
+										<td class="electricUsage">3276.06449</td>
+										<td class="internetUsage">38.8</td>
 								</tr>
 						</tbody>
 				</table>
