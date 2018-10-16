@@ -16,8 +16,31 @@
 }
 
 header {
+    background-color: aquamarine;
+    height: 70px;
     position: fixed;
     width: 100%;
+}
+
+nav {
+    display: block;
+    height: 100%;
+    max-width: 1170px;
+}
+
+nav ul {
+    height: 100%;
+    display: inline-block;
+}
+
+nav li {
+    display: inline;
+    float: left;
+    height: 100%;
+}
+
+nav li a{
+    border-left: 1px solid;
 }
 
 footer {
@@ -33,16 +56,21 @@ body {
     font-style: normal;
 }
 
-div {
+#inhalt{
+    padding-top: 70px;
+}
+
+.textbox {
     border: 1px solid gray;
     padding: 8px;
 }
-div p {
+
+.pInTextbox {
     column-width: 320px;
 }
 
 
-a {
+#inhalt a {
   color: #b1b1b1;
     text-decoration: underline;
 }
