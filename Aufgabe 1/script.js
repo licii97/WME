@@ -1,9 +1,8 @@
-<script>
-
 
 /* Funktion um Tabellenspalten sichtbar und unsichtbar zu machen */
-    function visibilityFct() {
-        var id;
-        document.getElementById("birthRate").style.display="none";
+function visibilityFct(id) {
+    var liste = document.getElementsByClassName(id);
+    for (var index=0 ; index<liste.length; index++){
+        liste[index].style.display="none";
     }
-</script>
+}

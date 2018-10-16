@@ -44,6 +44,7 @@ div p {
 
 a {
   color: #b1b1b1;
+    text-decoration: underline;
 }
 /*änderung des aussehens von links beim hovern*/
 a:hover {

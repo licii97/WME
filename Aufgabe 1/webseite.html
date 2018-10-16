@@ -1,25 +1,12 @@
 <!DOCTYPE html>
 <html>
 		<head>
-				<meta charset="utf-8"/>
-				<link rel="Stylesheet" type="text/css" href="stylesheet.css"/>
+			<meta charset="utf-8"/>
+			<link rel="Stylesheet" type="text/css" href="stylesheet.css"/>
 			<script type="text/javascript" src="script.js"></script>
 		</head>
 		<body>
-			<script>
-
-
-				/* Funktion um Tabellenspalten sichtbar und unsichtbar zu machen */
-				function visibilityFct(id) {
-					var liste = document.getElementsByClassName(id);
-					for (var index=0 ; index<liste.length; index++){
-					    liste[index].style.display="none";
-					}
-				}
-			</script>
-
-
-				<header>
+			<header>
 					<h1>  </h1>
 					<nav>
 					</nav>
@@ -33,11 +20,11 @@
 				</div>
 				<p>
 						Show/Hide :
-						<a href="" onclick="visibilityFct('birthRate')">birth rate</a> |
-						<a href="" onclick="visibilityFct('cellphones')">cellphones</a> |
-						<a href="" onclick="visibilityFct('children')">children / woman</a> |
-						<a href="" onclick="visibilityFct('electricUsage')">electric usage</a> |
-						<a href="" onclick="visibilityFct('internetUsage')">internet usage</a>
+						<a onclick="visibilityFct('birthRate')">birth rate</a> |
+						<a onclick="visibilityFct('cellphones')">cellphones</a> |
+						<a onclick="visibilityFct('children')">children / woman</a> |
+						<a onclick="visibilityFct('electricUsage')">electric usage</a> |
+						<a onclick="visibilityFct('internetUsage')">internet usage</a>
 				</p>
 				<table>
 						<thead>
