@@ -6,6 +6,16 @@
 			<script type="text/javascript" src="script.js"></script>
 		</head>
 		<body>
+			<script>
+
+
+				/* Funktion um Tabellenspalten sichtbar und unsichtbar zu machen */
+				function visibilityFct(id) {
+					document.getElementById(id).style.display="none";
+				}
+			</script>
+
+
 				<header>
 					<h1>  </h1>
 					<nav>
@@ -20,11 +30,11 @@
 				</div>
 				<p>
 						Show/Hide :
-						<a href="" onclick="visibilityFct();">birth rate</a> |
-						<a href="" onclick="visibilityFct();">cellphones</a> |
-						<a href="" onclick="visibilityFct();">children / woman</a> |
-						<a href="" onclick="visibilityFct();">electric usage</a> |
-						<a href="" onclick="visibilityFct();">internet usage</a>
+						<a href="" onclick="visibilityFct('birthRate')">birth rate</a> |
+						<a href="" onclick="visibilityFct('cellphones')">cellphones</a> |
+						<a href="" onclick="visibilityFct('children')">children / woman</a> |
+						<a href="" onclick="visibilityFct('electricUsage')">electric usage</a> |
+						<a href="" onclick="visibilityFct('internetUsage')">internet usage</a>
 				</p>
 				<table>
 						<thead>
@@ -42,7 +52,7 @@
 								<tr>
 										<td>1</td>
 										<td>Brazil</td>
-										<td>16.405</td>
+										<td >16.405</td>
 										<td>90.01936334</td>
 										<td>1862</td>
 										<td>2201.808724</td>
