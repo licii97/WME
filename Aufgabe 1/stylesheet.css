@@ -23,11 +23,12 @@
 
 /*---------------Dinge zum Header und der Navigation-----*/
 header {
-    background-color: lightgray;
+    background-color: #333333;
+    background: linear-gradient(to bottom, #d0d0d0 0%,#f0f0f0 100%);
+    border-bottom: 1px solid #ccc;
     height: 80px;
     position: fixed;
     width: 100%;
-    border-bottom: 1px solid darkgray;
     margin: 0;
     padding: 0;
 
@@ -48,15 +49,17 @@ nav ul {
 }
 
 nav li {
+    background: transparent;
     padding: 0 14px;
     height: 100%;
     display: inline;
     float: left;
-    border-right: 1px solid darkgray;
+    border-right: 1px solid #ccc;
+    transition:background 2s;
 }
 
 nav li:hover{
-    background-image: linear-gradient(lightgrey, darkgrey);
+    background: linear-gradient(lightgrey, darkgrey);
 }
 
 nav .fas{
@@ -65,6 +68,7 @@ nav .fas{
 }
 
 nav a{
+    color: #666;
     padding: 0;
     padding-left: 5px;
     display: inline-block;
@@ -81,7 +85,7 @@ nav a{
     width: 150px;
     padding: 0 50px;
     margin: 0;
-    border-right: 1px solid darkgray;
+    border-right: 1px solid #ccc;
 }
 
 #worldImg {
@@ -99,7 +103,7 @@ nav a{
 
 /*-----Footer---*/
 footer {
-    border-top: 1px solid limegreen;
+    border-top: 1px solid #6bc32d;
     position: absolute;
     width: 100%;
     padding: 14px 0 24px 0;
@@ -127,8 +131,8 @@ body {
 }
 
 .textbox {
-    border: 1px solid gray;
-    border-top: 1px solid limegreen;
+    border: 1px solid #ccc;
+    border-top: 1px solid #6bc32d;
     padding: 8px;
     padding-top: 10px;
     margin-top: 50px;
@@ -176,4 +180,5 @@ table tr:nth-of-type(even) {
 th {
     padding: 10px;
     padding-right: 40px;
+    text-align: left;
 }
