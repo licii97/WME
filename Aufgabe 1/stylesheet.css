@@ -27,14 +27,13 @@ header {
     height: 80px;
     position: fixed;
     width: 100%;
-    border-bottom: 1px darkgray;
+    border-bottom: 1px solid darkgray;
     margin: 0;
     padding: 0;
 
 }
 
 nav {
-    float: right;
     display: block;
     height: 100%;
     margin: 0;
@@ -46,7 +45,6 @@ nav ul {
     padding: 0;
     height: 100%;
     display: inline-block;
-    width: 100%;
 }
 
 nav li {
@@ -54,11 +52,12 @@ nav li {
     height: 100%;
     display: inline;
     float: left;
-    border-right: 1px darkgray;
+    border-right: 1px solid darkgray;
 }
 
 nav .fas{
     padding:0;
+    line-height: 100px;
 }
 
 nav a{
@@ -68,8 +67,17 @@ nav a{
     text-decoration: none;
     text-align: center;
     vertical-align: bottom;
-    line-height: 90px;
+    line-height: 100px;
     height: 100%;
+}
+
+#wrapperImg{
+    float: left;
+    height: 80px;
+    width: 150px;
+    padding: 0 50px;
+    margin: 0;
+    border-right: 1px solid darkgray;
 }
 
 #worldImg {
@@ -87,6 +95,7 @@ nav a{
 
 /*-----Footer---*/
 footer {
+    border-top: 1px solid limegreen;
     position: absolute;
     width: 100%;
     padding: 14px 0 24px 0;
@@ -115,6 +124,7 @@ body {
 
 .textbox {
     border: 1px solid gray;
+    border-top: 1px solid limegreen;
     padding: 8px;
     padding-top: 10px;
     margin-top: 50px;
@@ -141,9 +151,6 @@ body {
   text-decoration: none;
 }
 
-footer {
-  border-top: 5px solid #55dd22 ;
-}
 
 
 /*------------------------------------------------------
