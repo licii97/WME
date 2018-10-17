@@ -83,6 +83,8 @@ body {
     font-size: 14px;
     line-height: 145%;
     font-style: normal;
+    margin-top: 0px;
+    margin-left: 0px;
 }
 
 #inhalt{
@@ -90,11 +92,14 @@ body {
     margin: 0;
     padding: 40px;
     padding-top: 70px;
+    padding-left: 20px;
 }
 
 .textbox {
     border: 1px solid gray;
     padding: 8px;
+    padding-top: 10px;
+    margin-top: 50px;
 }
 
 .pInTextbox {
@@ -111,8 +116,16 @@ body {
 }
 
 /*änderung des aussehens von links beim hovern*/
-a:hover {
+#inhalt a:hover {
+    text-decoration: none;
+}
+
+#angleUp {
   text-decoration: none;
+}
+
+footer {
+  border-top: 5px solid #55dd22 ;
 }
 
 
@@ -123,6 +136,9 @@ a:hover {
 /*zwischen den Boxen werden keine Linien angezeigt*/
 table {
   border-collapse: collapse;
+  width: 70%;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 /*jede zweite zeile grau*/
 table tr:nth-of-type(even) {
