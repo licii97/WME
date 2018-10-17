@@ -85,6 +85,10 @@ body {
     text-decoration: none;
 }
 
+#angleUp {
+  text-decoration: none;
+}
+
 footer {
   border-top: 5px solid #55dd22 ;
 }
@@ -97,7 +101,7 @@ footer {
 /*zwischen den Boxen werden keine Linien angezeigt*/
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 70%;
   padding-left: 10px;
   padding-right: 10px;
 }
