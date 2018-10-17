@@ -55,6 +55,10 @@ nav li {
     border-right: 1px solid darkgray;
 }
 
+nav li:hover{
+    background-image: linear-gradient(lightgrey, darkgrey);
+}
+
 nav .fas{
     padding:0;
     line-height: 100px;
