@@ -3,7 +3,8 @@
 		<head>
 			<meta charset="utf-8"/>
 			<link rel="Stylesheet" type="text/css" href="stylesheet.css"/>
-			<script type="text/javascript" src="script.js"></script>
+			<script type="text/javascript" src="showHideFct.js"></script>
+			<script type="text/javascript" src="sortTable.js"></script>
             <!--Einbindung der Icons-->
 			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
 			<title>World Data</title>
@@ -15,12 +16,12 @@
                 </div>
 				<nav>
 					<ul>
-                        <li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i>A1 - Table</a></li>
-						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i>A2 - Parse</a></li>
-						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i>A2 - Save</a></li>
-						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i>A2 - Print</a></li>
-						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i>A3 - REST</a></li>
-						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i>A4 - Vis</a></li>
+            <li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A1 - Table</a></li>
+						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A2 - Parse</a></li>
+						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A2 - Save</a></li>
+						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A2 - Print</a></li>
+						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A3 - REST</a></li>
+						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A4 - Vis</a></li>
 					</ul>
 				</nav>
 			</header>
@@ -40,11 +41,11 @@
 						<a onclick="visibilityFct('electricUsage')">electric usage</a> |
 						<a onclick="visibilityFct('internetUsage')">internet usage</a>
 				</p>
-				<table>
+				<table id="worldDataTable">
 						<thead>
 								<tr>
 										<th >ID </th>
-										<th>Country <a style="color:#55dd22; text-decoration:none;" class="fas fa-angle-up"></a> <a style="color:#55dd22; text-decoration:none;" class="fas fa-angle-down"></a> </th>
+										<th>Country <a style="color:#55dd22; text-decoration:none;" class="fas fa-angle-up" onclick="sortTableUp()"></a> <a style="color:#55dd22; text-decoration:none;" class="fas fa-angle-down" onclick="sortTableDown()"></a> </th>
 										<th class="birthRate">Birth Rate / 1000</th>
 										<th class="cellphones">Cellphones / 100</th>
 										<th class="children">children / woman</th>

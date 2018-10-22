@@ -55,7 +55,8 @@ nav li {
     display: inline;
     float: left;
     border-right: 1px solid #ccc;
-    transition:background 2s;
+    transition: background 1s;
+    transition-delay: 1s;
 }
 
 nav li:hover{
