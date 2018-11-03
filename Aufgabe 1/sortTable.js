@@ -1,65 +1,67 @@
+// Quelle: https://www.w3schools.com/howto/howto_js_sort_table.asp
+
 function sortTableUp() {
 
-  var table, rows, switching, i, x, y, shouldSwitch;
+  var table, rows, swapping, i, x, y, shouldSwap;
 
   table = document.getElementById("worldDataTable");
 
-  switching = true;
+  swapping = true;
 
-  while (switching) {
+  while (swapping) {
 
-    switching = false;
+    swapping = false;
     rows = table.rows;
 
     for (i = 1; i < (rows.length - 1); i++) {
 
-      shouldSwitch = false;
+      shouldSwap = false;
 
       x = rows[i].getElementsByTagName("TD")[1];
       y = rows[i + 1].getElementsByTagName("TD")[1];
 
       if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        shouldSwitch = true;
+        shouldSwap = true;
         break;
       }
     }
-    if (shouldSwitch) {
+    if (shouldSwap) {
 
       rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
+      swapping = true;
     }
   }
 }
 
 function sortTableDown() {
 
-  var table, rows, switching, i, x, y, shouldSwitch;
+    var table, rows, swapping, i, x, y, shouldSwap;
 
-  table = document.getElementById("worldDataTable");
+    table = document.getElementById("worldDataTable");
 
-  switching = true;
+    swapping = true;
 
-  while (switching) {
+    while (swapping) {
 
-    switching = false;
-    rows = table.rows;
+      swapping = false;
+      rows = table.rows;
 
-    for (i = 1; i < (rows.length - 1); i++) {
+      for (i = 1; i < (rows.length - 1); i++) {
 
-      shouldSwitch = false;
+        shouldSwap = false;
 
-      x = rows[i].getElementsByTagName("TD")[1];
-      y = rows[i + 1].getElementsByTagName("TD")[1];
+        x = rows[i].getElementsByTagName("TD")[1];
+        y = rows[i + 1].getElementsByTagName("TD")[1];
 
-      if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-        shouldSwitch = true;
-        break;
+        if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+          shouldSwap = true;
+          break;
+        }
+      }
+      if (shouldSwap) {
+
+        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+        swapping = true;
       }
     }
-    if (shouldSwitch) {
-
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-  }
 }

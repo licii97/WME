@@ -55,12 +55,11 @@ nav li {
     display: inline;
     float: left;
     border-right: 1px solid #ccc;
-    transition: background 1s;
-    transition-delay: 1s;
+    -moz-transition: background-color 1s ease-out;
 }
 
-nav li:hover{
-    background: linear-gradient(lightgrey, darkgrey);
+li:hover{
+    background-color: #cccccc;
 }
 
 nav .fas{
@@ -111,7 +110,7 @@ footer {
     padding: 14px 0 24px 0;
 }
 
-/*allg vorgaben zur schrift*/
+/* Allgemeines */
 body {
     margin:0;
     max-width: 1170px;
