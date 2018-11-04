@@ -1,7 +1,7 @@
 window.addEventListener('resize', function() {
-  var classNames = ['birthRate', 'cellphones', 'children', 'electricUsage', 'internetUsage'];
   var width = window.innerWidth;
   if (width > 1200) {
+    var classNames = ['children', 'electricUsage', 'internetUsage'];
     for (var i = 0; i < classNames.length; i++ ){
         var listOfColumns = document.getElementsByClassName(classNames[i]);
         for (var j = 0; j < listOfColumns.length; j++){
@@ -9,21 +9,23 @@ window.addEventListener('resize', function() {
         }
     }
   }
-  else if (768 < width < 1200) {
+  else if (width < 1200 && width > 768 ) {
+        var classNames = ['children', 'electricUsage'];
         coloumnsDisplayNone('internetUsage');
 
-        for (var i = 0; i < (classNames.length - 1); i++ ){
+        for (var i = 0; i < classNames.length; i++ ){
             var listOfColumns = document.getElementsByClassName(classNames[i]);
             for (var j = 0; j < listOfColumns.length; j++){
               listOfColumns[j].style.display="table-cell";
             }
         }
   }
-  else if (320 < width < 768) {
+  else if (width < 768 && width > 320 ) {
+        var classNames = ['children'];
         coloumnsDisplayNone('internetUsage');
         coloumnsDisplayNone('electricUsage');
 
-        for (var i = 0; i < (classNames.length - 2); i++ ){
+        for (var i = 0; i < classNames.length; i++ ){
             var listOfColumns = document.getElementsByClassName(classNames[i]);
             for (var j = 0; j < listOfColumns.length; j++){
               listOfColumns[j].style.display="table-cell";
@@ -34,13 +36,6 @@ window.addEventListener('resize', function() {
         coloumnsDisplayNone('internetUsage');
         coloumnsDisplayNone('electricUsage');
         coloumnsDisplayNone('children');
-
-        for (var i = 0; i < (classNames.length - 3); i++ ){
-            var listOfColumns = document.getElementsByClassName(classNames[i]);
-            for (var j = 0; j < listOfColumns.length; j++){
-              listOfColumns[j].style.display="table-cell";
-            }
-        }
   }
 });
 
