@@ -1,2 +1,5 @@
+Web und Multimedia Engineering
+
 Team 3 
-Verona Kolpe & Felicitas Schmelz 
+Verona Kolpe (4609197)
+Felicitas Schmelz (4643874)

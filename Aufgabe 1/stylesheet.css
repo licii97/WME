@@ -6,11 +6,13 @@
     font-family:'Roboto';
     font-style: normal;
     src:
-      local('Roboto');          // Erst nachsehen, ob die Schrift
-      local('Roboto-Regular'); // beim Besucher schon installiert ist
+      local('Roboto'),         // Erst nachsehen, ob die Schrift
+      local('Roboto-Regular'), // beim Besucher schon installiert ist
       url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2'); // Wenn nicht, wird die Schrift vom Webserver geladen
 
 }
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 .left{
     float:left;
@@ -129,6 +131,11 @@ body {
     margin: 0;
     padding: 40px;
     padding-top: 130px;
+}
+
+h1{
+  font-size: 45px; 
+  font-style: normal;
 }
 
 .textbox {
