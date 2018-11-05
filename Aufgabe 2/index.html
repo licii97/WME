@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zxx">
+		<head>
+			<meta charset="utf-8"/>
+			<link rel="Stylesheet" type="text/css" href="htmlReset.css"/>
+			<link rel="Stylesheet" type="text/css" href="stylesheet.css"/>
+			<script src="showHideFct.js"></script>
+			<script src="sortTable.js"></script>
+			<script src="hideColumns.js"></script>
+            <!--Einbindung der Icons-->
+			<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+			<title>World Data</title>
+			<meta name="author" content="Felicitas Schmelz, Verona Kolpe ">
+			<meta name="description" content="1. Übungsaufgabe zur Vorlesung Web und Multimedia Engineering">
+			<meta name="keywords" content="Web und Multimedia Engineering, Übung, TU Dresden, erste Aufgabe">
+		</head>
+		<body>
+			<header>
+                <div id="wrapperImg">
+                <a href="" id="worldImg"></a>
+                </div>
+				<nav>
+					<ul>
+            <li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A1 - Table</a></li>
+						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A2 - Parse</a></li>
+						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A2 - Save</a></li>
+						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A2 - Print</a></li>
+						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A3 - REST</a></li>
+						<li><a href=""><i style="line-height: 100px;" class="fas fa-list-ul"></i> A4 - Vis</a></li>
+					</ul>
+				</nav>
+			</header>
+			<div id="inhalt">
+				<h1> World Data Overview ...</h1>
+				<div class="textbox">
+					<p class="pInTextbox">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+						Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.
+						Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.
+						Stet clita kasd gubergren, no sea</p>
+				</div>
+				<p id="showHide1">
+						Show/Hide :
+						<a onclick="visibilityFct('birthRate')">birth rate</a> |
+						<a onclick="visibilityFct('cellphones')">cellphones</a> |
+						<a onclick="visibilityFct('children')">children / woman</a> |
+						<a onclick="visibilityFct('electricUsage')">electric usage</a> |
+						<a onclick="visibilityFct('internetUsage')">internet usage</a>
+				</p>
+				<table id="worldDataTable">
+						<thead>
+								<tr>
+										<th id="id">ID </th>
+										<th>Country <a style="color:#55dd22; text-decoration:none;" class="fas fa-angle-up" onclick="sortTableUp()"></a> <a style="color:#55dd22; text-decoration:none;" class="fas fa-angle-down" onclick="sortTableDown()"></a> </th>
+										<th class="birthRate">Birth Rate / 1000</th>
+										<th class="cellphones">Cellphones / 100</th>
+										<th class="children">children / woman</th>
+										<th class="electricUsage">electric usage</th>
+										<th class="internetUsage">internet usage</th>
+								</tr>
+						</thead>
+						<tbody>
+								<tr>
+										<td>1</td>
+										<td>Brazil</td>
+										<td class="birthRate">16.405</td>
+										<td class="cellphones">90.01936334</td>
+										<td class="children">1.862</td>
+										<td class="electricUsage">2201.808724</td>
+										<td class="internetUsage">39.22</td>
+								</tr>
+								<tr>
+										<td>2</td>
+										<td>Canada</td>
+										<td class="birthRate">10.625</td>
+										<td class="cellphones">70.70997244</td>
+										<td class="children">1.668</td>
+										<td class="electricUsage">15119.76414</td>
+										<td class="internetUsage">80.17086651</td>
+								</tr>
+								<tr>
+										<td>3</td>
+										<td>Chile</td>
+										<td class="birthRate">15.04</td>
+										<td class="cellphones">97.01862561</td>
+										<td class="children">1.873</td>
+										<td class="electricUsage">3276.06449</td>
+										<td class="internetUsage">38.8</td>
+								</tr>
+								<tr>
+										<td>4</td>
+										<td>China</td>
+										<td class="birthRate">13.536</td>
+										<td class="cellphones">55.97490921</td>
+										<td class="children">1.642</td>
+										<td class="electricUsage">2632.724637</td>
+										<td class="internetUsage">28.97659939</td>
+								</tr>
+								<tr>
+										<td>5</td>
+										<td>Colombia</td>
+										<td class="birthRate">20.605</td>
+										<td class="cellphones">92.34584564</td>
+										<td class="children">2.405</td>
+										<td class="electricUsage">1041.994137</td>
+										<td class="internetUsage">30</td>
+								</tr>
+								<tr>
+										<td>6</td>
+										<td>Ecuador</td>
+										<td class="birthRate">20.989</td>
+										<td class="cellphones">92.84925653</td>
+										<td class="children">2.69</td>
+										<td class="electricUsage">1078.038961</td>
+										<td class="internetUsage">24.6</td>
+								</tr>
+								<tr>
+										<td>7</td>
+										<td>Egypt</td>
+										<td class="birthRate">24.83</td>
+										<td class="cellphones">69.43661504</td>
+										<td class="children">2.919</td>
+										<td class="electricUsage">1607.918763</td>
+										<td class="internetUsage">24.28</td>
+								</tr>
+								<tr>
+										<td>8</td>
+										<td>Finland</td>
+										<td class="birthRate">11.127</td>
+										<td class="cellphones">144.1530224</td>
+										<td class="children">1.86</td>
+										<td class="electricUsage">15241.61194</td>
+										<td class="internetUsage">82.53133098</td>
+								</tr>
+								<tr>
+										<td>9</td>
+										<td>France</td>
+										<td class="birthRate">12.21</td>
+										<td class="cellphones">95.44434226</td>
+										<td class="children">1.978</td>
+										<td class="electricUsage">7339.946832</td>
+										<td class="internetUsage">69.0633593</td>
+								</tr>
+								<tr>
+										<td>10</td>
+										<td>Germany</td>
+										<td class="birthRate">8.136</td>
+										<td class="cellphones">127.4188883</td>
+										<td class="children">1.376</td>
+										<td class="electricUsage">6753.05764</td>
+										<td class="internetUsage">79.48523153</td>
+								</tr>
+								<tr>
+										<td>11</td>
+										<td>Iceland</td>
+										<td class="birthRate">14.738</td>
+										<td class="cellphones">107.6604456</td>
+										<td class="children">2.123</td>
+										<td class="electricUsage">51259.18763</td>
+										<td class="internetUsage">92.13686385</td>
+								</tr>
+								<tr>
+										<td>12</td>
+										<td>Iraq</td>
+										<td class="birthRate">31.585</td>
+										<td class="cellphones">65.47478839</td>
+										<td class="children">4.276</td>
+										<td class="electricUsage">1086.323768</td>
+										<td class="internetUsage">1.047516616</td>
+								</tr>
+								<tr>
+										<td>13</td>
+										<td>Japan</td>
+										<td class="birthRate">8.201</td>
+										<td class="cellphones">91.8955442</td>
+										<td class="children">1.359</td>
+										<td class="electricUsage">7838.005685</td>
+										<td class="internetUsage">77.38468963</td>
+								</tr>
+								<tr>
+										<td>14</td>
+										<td>Kazakhstan</td>
+										<td class="birthRate">19.775</td>
+										<td class="cellphones">107.7147692</td>
+										<td class="children">2.537</td>
+										<td class="electricUsage">4447.142293</td>
+										<td class="internetUsage">17.91457965</td>
+								</tr>
+								<tr>
+										<td>15</td>
+										<td>Mexico</td>
+										<td class="birthRate">19.091</td>
+										<td class="cellphones">74.25785259</td>
+										<td class="children">2.313</td>
+										<td class="electricUsage">1869.82352</td>
+										<td class="internetUsage">26.34</td>
+								</tr>
+								<tr>
+										<td>16</td>
+										<td>New Zealand</td>
+										<td class="birthRate">13.831</td>
+										<td class="cellphones">108.7301521</td>
+										<td class="children">2.125</td>
+										<td class="electricUsage">9375.550304</td>
+										<td class="internetUsage">79.82609287</td>
+								</tr>
+								<tr>
+										<td>17</td>
+										<td>Nigeria</td>
+										<td class="birthRate">40.134</td>
+										<td class="cellphones">48.23561006</td>
+										<td class="children">6.021</td>
+										<td class="electricUsage">119.8151486</td>
+										<td class="internetUsage">20</td>
+								</tr>
+								<tr>
+										<td>18</td>
+										<td>Peru</td>
+										<td class="birthRate">21.342</td>
+										<td class="cellphones">85.86901405</td>
+										<td class="children">2.545</td>
+										<td class="electricUsage">1043.052601</td>
+										<td class="internetUsage">31.4</td>
+								</tr>
+								<tr>
+										<td>19</td>
+										<td>Russia</td>
+										<td class="birthRate">10.828</td>
+										<td class="cellphones">161.1162887</td>
+										<td class="children">1.537</td>
+										<td class="electricUsage">6132.978648</td>
+										<td class="internetUsage">29.23584146</td>
+								</tr>
+								<tr>
+										<td>20</td>
+										<td>Saudi Arabia</td>
+										<td class="birthRate">23.569</td>
+										<td class="cellphones">167.3474553</td>
+										<td class="children">2.898</td>
+										<td class="electricUsage">7430.743897</td>
+										<td class="internetUsage">38</td>
+								</tr>
+								<tr>
+										<td>21</td>
+										<td>South Africa</td>
+										<td class="birthRate">22.113</td>
+										<td class="cellphones">93.33587369</td>
+										<td class="children">2.5</td>
+										<td class="electricUsage">4532.021902</td>
+										<td class="internetUsage">10.08745979</td>
+								</tr>
+								<tr>
+										<td>22</td>
+										<td>Sweden</td>
+										<td class="birthRate">11.72</td>
+										<td class="cellphones">112.1241184</td>
+										<td class="children">1.937</td>
+										<td class="electricUsage">14143.01101</td>
+										<td class="internetUsage">91.12326108</td>
+								</tr>
+								<tr>
+										<td>23</td>
+										<td>United Arab Emirates</td>
+										<td class="birthRate">14.027</td>
+										<td class="cellphones">153.7997194</td>
+										<td class="children">1.903</td>
+										<td class="electricUsage">9998.291079</td>
+										<td class="internetUsage">64</td>
+								</tr>
+								<tr>
+										<td>24</td>
+										<td>United Kingdom</td>
+										<td class="birthRate">12.195</td>
+										<td class="cellphones">130.1742603</td>
+										<td class="children">1.89</td>
+										<td class="electricUsage">5685.635995</td>
+										<td class="internetUsage">77.79971962</td>
+								</tr>
+								<tr>
+										<td>25</td>
+										<td>United States</td>
+										<td class="birthRate">14.191</td>
+										<td class="cellphones">89.14911634</td>
+										<td class="children">2.002</td>
+										<td class="electricUsage">12913.71143</td>
+										<td class="internetUsage">71.21181627</td>
+								</tr>
+						</tbody>
+				</table>
+
+				<p id="showHide2">
+
+					Show/Hide :
+					<a onclick="visibilityFct('birthRate')">birth rate</a> |
+					<a onclick="visibilityFct('cellphones')">cellphones</a> |
+					<a onclick="visibilityFct('children')">children / woman</a> |
+					<a onclick="visibilityFct('electricUsage')">electric usage</a> |
+					<a onclick="visibilityFct('internetUsage')">internet usage</a>
+
+				</p>
+
+				<footer>
+					<div class="left">Copyright 2018 world_data<br>First course exercise HTML, CSS and JS of the lecture Web and Multimedia Engineering.</div>
+					<div class="right">This solution has been created by:<br> Team 3</div>
+
+				</footer>
+			</div>
+		</body>
+</html>

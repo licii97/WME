@@ -1,0 +1,224 @@
+/*------------------------------------------------------
+------------------ Allgemeines--------------------------
+------------------------------------------------------*/
+
+@font-face {
+    font-family:'Roboto';
+    font-style: normal;
+    src:
+      local('Roboto'),         // Erst nachsehen, ob die Schrift
+      local('Roboto-Regular'), // beim Besucher schon installiert ist
+      url(https://fonts.gstatic.com/s/roboto/v18/KFOmCnqEu92Fr1Mu72xKOzY.woff2) format('woff2'); // Wenn nicht, wird die Schrift vom Webserver geladen
+
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+.left{
+    float:left;
+}
+
+.right{
+    float:right;
+}
+
+
+/*---------------Dinge zum Header und der Navigation-----*/
+header {
+    background-color: #333333;
+    background: linear-gradient(to bottom, #d0d0d0 0%,#f0f0f0 100%);
+    border-bottom: 1px solid #ccc;
+    height: 80px;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+nav {
+    display: block;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: inline-block;
+}
+
+nav li {
+    background: transparent;
+    padding: 0 14px;
+    height: 100%;
+    display: inline;
+    float: left;
+    border-right: 1px solid #ccc;
+    -moz-transition: background-color 1s ease-out;
+}
+
+li:hover{
+    background-color: #cccccc;
+}
+
+nav .fas{
+    padding:0;
+    line-height: 100px;
+}
+
+nav a{
+    color: #666;
+    padding: 0;
+    padding-left: 5px;
+    display: inline-block;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: bottom;
+    line-height: 100px;
+    height: 100%;
+}
+
+#wrapperImg{
+    float: left;
+    height: 80px;
+    width: 150px;
+    padding: 0 50px;
+    margin: 0;
+    border-right: 1px solid #ccc;
+}
+
+#worldImg {
+    float: left;
+    width: 150px;
+    height: 80px;
+    background-image: url('bilder/world_data_logo_vbunt.png');
+    margin: 0;
+    padding:0;
+}
+
+#worldImg:hover{
+    background-image: url('bilder/world_data_logo_vgrau.png');
+}
+
+/*-----Footer---*/
+footer {
+    border-top: 1px solid #6bc32d;
+    position: absolute;
+    max-width: 1170px;
+    width:100%;
+    padding: 14px 0 24px 0;
+}
+
+/* Allgemeines */
+body {
+    margin:0;
+    max-width: 1170px;
+    width: 100%;
+    padding: 0;
+    font-family: Roboto;
+    font-size: 14px;
+    line-height: 145%;
+    font-style: normal;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+#inhalt{
+    width: 100%;
+    margin: 0;
+    padding: 40px;
+    padding-top: 130px;
+}
+
+h1{
+  font-size: 45px; 
+  font-style: normal;
+}
+
+#showHide1{
+	margin-bottom: 10px; 
+	margin-top:20px; 
+}
+
+#showHide2{
+	margin-bottom: 40px; 
+	margin-top:20px; 
+}
+
+
+.textbox {
+    border: 1px solid #ccc;
+    border-top: 1px solid #6bc32d;
+    padding: 8px;
+    padding-top: 10px;
+    margin-top: 50px;
+}
+
+.pInTextbox {
+    column-width: 320px;
+}
+
+
+#inhalt a {
+    color: #b1b1b1;
+    text-decoration: underline;
+    margin: auto;
+}
+
+
+/*änderung des aussehens von links beim hovern*/
+#inhalt a:hover {
+    text-decoration: none;
+}
+
+#angleUp {
+  text-decoration: none;
+}
+
+
+
+/*------------------------------------------------------
+------------- Tabellenspezifisches----------------------
+------------------------------------------------------*/
+
+/*zwischen den Boxen werden keine Linien angezeigt*/
+table {
+  border-collapse: collapse;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/*jede zweite zeile grau*/
+table tr:nth-of-type(even) {
+  background-color: #eeeeee;
+}
+
+
+thead{
+	border-bottom: 3px solid #cccccc;
+}
+
+th {
+	font-weight: bold; 
+    padding: 10px;
+	padding-left: 0px; 
+    text-align: left;
+    overflow: hidden;
+    max-width: 168px;
+    min-width: 100px;
+}
+
+#id{
+	padding-right:0px; 
+	min-width: 30px; 
+}
+
+td{
+padding-bottom: 5px; 
+padding-top: 5px; 
+  max-width:168px;
+  min-width: 100px;
+}
