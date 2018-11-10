@@ -1,33 +1,53 @@
 <?php
-class WorldDataParser  {
-	public function parseCSV($pfad)  
-	{
-		//array fgetcsv(resource $handle, integer $length, string $delimiter)
-		//return array; 
-		//$data; 
-		$row = 1;
-		if (($handle = fopen("world_data_v1.csv", "r")) !== FALSE) {
-			while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-				$num = count($data);
-				echo "<p> $num Felder in Zeile $row: <br /></p>\n";
-				$row++;
-				for ($c=0; $c < $num; $c++) {
-					echo $data[$c] . "<br />\n";
+
+public function arrayToXml($dataArray, $xmlFile){
+
+	}
+
+
+class WorldDataParser {
+	 function parseCSV($csvPath) {
+	 	//großer Array, der alle Dtaen beinhaltet
+	 	$dataArray = array(); 
+	 	//hilfarray, damit man Daten einer Zeile in einem eigenem Array abspeichern kann
+	 	$arrayRow = array(); 
+	 	
+		$currentRow = 1;
+		$numberOfCategories = 14; 
+
+		// stelle sicher, dass die Datei gelesen werden kann
+		if (($csvFile = fopen($csvPath, "r")) !== FALSE) {
+			// lese CSV ein, solange bis keine Daten mehr kommen 
+			while (($csvData = fgetcsv($csvFile, 0, ",")) !== FALSE){
+				//gehe pro Zeile jede Kategorie durch
+				for ($i=0, $i<$numberOfCategories, $i++;){
+					$arrayRow[$i] = $csvData[$i]; 
 				}
+				//nachdem alle Daten einer Zeile ausgelesen wurden, schreibe den Array der Zeile an die nächste Stelle im dataArray
+				$dataArray[$currentRow] = $rowArray; 
+				//springe zur nächsten Zeile 
+				$currentRow++;
 			}
-			fclose($handle);
+
+			fclose($csvFile);
 		}
-		//return $data; 
+		return $csvData; 
 	}
+
 	
-	public function saveXML()
-	{
+	
+	public function saveXML($dateArray) {
+		$
+
+		$status=false; 
+
 	//XML Datei soll im gleichen Ordner als  world_data.xml gespeichert werden
+		return $status; 
 	}
 
-	public functiom printXML()
-	{
-		
+	public function printXML() {
+		echo "hello world";
 	}
 
+}
 ?>
