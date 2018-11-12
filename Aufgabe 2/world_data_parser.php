@@ -1,8 +1,8 @@
 <?php
 
-public function arrayToXml($dataArray, $xmlFile){
-
-	}
+/*public function arrayToXml($dataArray, $xmlFile){
+	echo "hello wolrd";
+	}*/
 
 
 class WorldDataParser {
@@ -16,29 +16,29 @@ class WorldDataParser {
 		$numberOfCategories = 14; 
 
 		// stelle sicher, dass die Datei gelesen werden kann
-		if (($csvFile = fopen($csvPath, "r")) !== FALSE) {
-			// lese CSV ein, solange bis keine Daten mehr kommen 
-			while (($csvData = fgetcsv($csvFile, 0, ",")) !== FALSE){
-				//gehe pro Zeile jede Kategorie durch
-				for ($i=0, $i<$numberOfCategories, $i++;){
-					$arrayRow[$i] = $csvData[$i]; 
-				}
-				//nachdem alle Daten einer Zeile ausgelesen wurden, schreibe den Array der Zeile an die nächste Stelle im dataArray
-				$dataArray[$currentRow] = $rowArray; 
-				//springe zur nächsten Zeile 
-				$currentRow++;
-			}
+		$csvFile = fopen($csvPath, "r");
 
-			fclose($csvFile);
+		// lese CSV ein, solange bis keine Daten mehr kommen 
+		while (($csvData = fgetcsv($csvFile, 0, ",")) !== FALSE){
+			//gehe pro Zeile jede Kategorie durch
+			for ($i=0; $i<$numberOfCategories; $i++){
+					 $arrayRow[$i]=$csvData[$i];
+				}
+
+			$dataArray[]=$arrayRow;
+			//$currentRow++;
+
 		}
-		return $csvData; 
+		fclose($csvFile);
+
+
+
+		return $dataArray;
 	}
 
 	
 	
 	public function saveXML($dateArray) {
-		$
-
 		$status=false; 
 
 	//XML Datei soll im gleichen Ordner als  world_data.xml gespeichert werden
