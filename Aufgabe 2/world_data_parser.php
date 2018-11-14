@@ -1,10 +1,5 @@
 <?php
 
-/*public function arrayToXml($dataArray, $xmlFile){
-	echo "hello wolrd";
-	}*/
-
-
 class WorldDataParser {
 	 function parseCSV($csvPath) {
 	 	//großer Array, der alle Dtaen beinhaltet
@@ -49,37 +44,46 @@ class WorldDataParser {
 	}
 
 
-	/*public function arrayToXml($array){
-		//Root der XML-Datei 
-		$root = new SimpleXMLElement('<root/>');
-		$xmlFile = array_walk_recursive($array, array ($root, 'addChild'));
-		return $xmlFile;
+
+	//Funktion, um array in eine XML-Datei einzulesen
+	public function arrayToXml(SimpleXMLElement $xmlElement, array $array){
+		foreach($array as $key => $value) {
+			if( is_numeric($key) ){
+            	$key = 'item'.$key; //dealing with <0/>..<n/> issues
+        	}
+
+			//prüft, ob der wert ein array oder ein einzelwert ist
+			if (is_array($value)){
+				$newElement = $xmlElement->addChild($key);
+				//führt die arrayToXml Konvertierung mit dem Wert durch 
+				arrayToXml($newElement, $value);
+			} 
+
+			else {
+				if ($key == (int) $key){
+					$key = "key_$key";
+				}
+				//wenn der Wert kein array sondern ein einzelwert ist, dann kann man einfach das Schlüssel-Wert paar als neuen Knoten in die XML Datei einfügen 
+				$xmlElement->addChild($key, $value);
+			}
+		}
+		
 	}
 	
+
 	
 	public function saveXML($dataArray) {
-		$status=false; 
+		
+	    	$xml = new SimpleXMLElement('<world_data><world_data/>');
 
-		$xmlDocument = fopen("./world_data.xml", "wa+"); 
-
-   		// function returns false if an error occured, else true
-	    if ($xmlDocument === true){
-	    	$xmlDocument = new DOMDocument('1.0', 'utf-8');
-
-	    	//wurzelelement erstellen 
-			$root = $xmlDocument->createElement('world_data');
-
-			// convert array to xml
-			arrayToXml($dataArray, $xmlDocument, $root);
+	    	arrayToXml($xml, $dataArray);
 
 			//speichert file in ordner ab 
-			$xmlDocument->save("./world_data.xml");
-
-			status=true;
-		}
-
-		return $status; 
-	}*/
+			$xml->asXML("./world_data.xml");
+			
+			return (true);
+		
+	}
 
 
 	public function printXML() {
