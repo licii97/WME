@@ -45,7 +45,7 @@ class WorldDataParser {
 
 
 
-	//Funktion, um array in eine XML-Datei einzulesen
+	//Funktion, um array in eine XML-Datei einzulesen, inspiriert von: https://stackoverflow.com/questions/1397036/how-to-convert-array-to-simplexml
 	public function arrayToXml(SimpleXMLElement $xmlElement, array $array){
 		foreach($array as $key => $value) {
 			if( is_numeric($key) ){
@@ -74,13 +74,14 @@ class WorldDataParser {
 	
 	public function saveXML($dataArray) {
 		
-	    	$xml = new SimpleXMLElement('<world_data><world_data/>');
+	    	$xml = new SimpleXMLElement();
+	    	$root=$xml->addChild('world_data');
 
-	    	arrayToXml($xml, $dataArray);
+	    	arrayToXml($root, $dataArray);
 
 			//speichert file in ordner ab 
 			$xml->asXML("./world_data.xml");
-			
+
 			return (true);
 		
 	}
