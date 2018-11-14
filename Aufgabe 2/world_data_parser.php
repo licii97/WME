@@ -49,7 +49,7 @@ class WorldDataParser {
 	}
 
 
-	public function arrayToXml($array){
+	/*public function arrayToXml($array){
 		//Root der XML-Datei 
 		$root = new SimpleXMLElement('<root/>');
 		$xmlFile = array_walk_recursive($array, array ($root, 'addChild'));
@@ -69,7 +69,6 @@ class WorldDataParser {
 	    	//wurzelelement erstellen 
 			$root = $xmlDocument->createElement('world_data');
 
-
 			// convert array to xml
 			arrayToXml($dataArray, $xmlDocument, $root);
 
@@ -80,7 +79,8 @@ class WorldDataParser {
 		}
 
 		return $status; 
-	}
+	}*/
+
 
 	public function printXML() {
 		echo "hello world";
