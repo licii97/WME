@@ -75,7 +75,7 @@ class WorldDataParser {
 	public function saveXML($dataArray) {
 		
 	    	$xml = new SimpleXMLElement();
-	    	$root=$xml->addChild('world_data');
+	    	$root = $xml->addChild('world_data');
 
 	    	arrayToXml($root, $dataArray);
 
@@ -87,8 +87,16 @@ class WorldDataParser {
 	}
 
 
-	public function printXML() {
-		echo "hello world";
+	public function printXML($xmlPfad, $xlsPfad) {
+		$xsl = new DOMDocument();
+		$xsl->load($xlsPfad);
+
+		$xml = new DOMDocument();
+		$xml->load($xmlPfad);
+
+		$xslProcessor = new XSLTProcessor();
+		$xslProcessor->importStyleSheet($xsl);
+		echo $xslProcessor->transformToXML($xml);
 	}
 
 }
