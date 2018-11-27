@@ -46,8 +46,9 @@ class WorldDataParser {
 
 
 	//Funktion, um array in eine XML-Datei einzulesen, inspiriert von: https://stackoverflow.com/questions/1397036/how-to-convert-array-to-simplexml
-	public function arrayToXml(SimpleXMLElement $xmlElement, array $array){
-		foreach($array as $key => $value) {
+	public function arrayToXml($xmlElement, $array){
+		//print("erster schritt geschafft");
+		/*foreach($array as $key => $value) {
 			if( is_numeric($key) ){
             	$key = 'item'.$key; //dealing with <0/>..<n/> issues
         	}
@@ -66,38 +67,62 @@ class WorldDataParser {
 				//wenn der Wert kein array sondern ein einzelwert ist, dann kann man einfach das Schlüssel-Wert paar als neuen Knoten in die XML Datei einfügen 
 				$xmlElement->addChild($key, $value);
 			}
-		}
+		}*/
 		
 	}
 	
 
 	
 	public function saveXML($dataArray) {
-		
-	    	$xml = new SimpleXMLElement();
-	    	$root = $xml->addChild('world_data');
+		if (is_null($dataArray)){
+			return false;
+		}
 
-	    	arrayToXml($root, $dataArray);
+		$xmlDocument = new DOMDocument('1.0', 'utf-8');
+		// formatierter Output
+		$xmlDocument->formatOutput = true;
+		$root = $xmlDocument->createElement('Countries');
+		$root = $xmlDocument->appendChild($root);
 
-			//speichert file in ordner ab 
-			$xml->asXML("./world_data.xml");
+		foreach ($dataArray as $key => $value) {
+			$country = $xmlDocument->createElement('Country');
+			$country = $root->appendChild($country);
 
-			return (true);
-		
+			foreach ($value as $key2 => $value2) {
+				//echo $key2;
+				//echo $value2;
+
+				// schlüssel und wert in die richtige Form bringen -> strtok und rtrim
+				$categoryNode = $xmlDocument->createElement(strtok($key2, " "), rtrim($value2));
+				$country->appendChild($categoryNode);
+			}
+		}
+
+		$xmlDocument->save("./world_data.xml");
+		//var_dump($xmlDocument);
+		return true; 
 	}
 
+	public function printXML($xmlPfad, $xslPfad) {
+		if (is_null($xmlPfad)){
+			return "XML Pfad fehlerhaft.";
+		}
 
-	public function printXML($xmlPfad, $xlsPfad) {
+		if (is_null($xslPfad)){
+			return "XSL Pfad fehlerhaft.";
+		}
+
 		$xsl = new DOMDocument();
-		$xsl->load($xlsPfad);
+		$xsl->load($xslPfad);
 
 		$xml = new DOMDocument();
 		$xml->load($xmlPfad);
 
 		$xslProcessor = new XSLTProcessor();
 		$xslProcessor->importStyleSheet($xsl);
-		echo $xslProcessor->transformToXML($xml);
+		return $xslProcessor->transformToXML($xml);
 	}
 
 }
+
 ?>

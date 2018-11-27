@@ -6,10 +6,11 @@ $csv = $wdp->parseCSV("./world_data_v1.csv");
 $xmlStatus = $wdp->saveXML($csv);
 
 if ($xmlStatus === true ){
-		echo "Die XML-Datei wurde erfolgreich erstellt und gespeichert.";
+		echo "XML Savestatus: erfolgreich (1)";
 	} else {
-		echo "Fehler beim Erstellen und Speichern der XML-Datei";
+		echo "XML Savestatus: fehlgeschlagen (0)";
 	} 
+
 
 ?>
 

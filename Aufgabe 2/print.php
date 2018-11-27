@@ -34,12 +34,6 @@
 			<div id="inhalt">
 				
 				<h1> World Data Overview ...</h1>
-				<div class="textbox">
-					<p class="pInTextbox">Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-						Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis.
-						Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus.
-						Stet clita kasd gubergren, no sea</p>
-				</div>
 				<p id="showHide1">
 						Show/Hide :
 						<a onclick="visibilityFct('birthRate')">birth rate</a> |
@@ -49,20 +43,22 @@
 						<a onclick="visibilityFct('internetUsage')">internet usage</a>
 				</p>
 			
-				//erstellen der Tabelle 
+				<!--erstellen der Tabelle -->
 				<?php 
 					require 'world_data_parser.php';
 
 					$wdp = new WorldDataParser;
 					$csv = $wdp->parseCSV("./world_data_v1.csv");
 
-					$xmlStatus = $wdp->saveXML($csv);
+					$resultSave = $wdp->saveXML($csv);
 
-					if ($xmlStatus === true ){
-							echo "Die XML-Datei wurde erfolgreich erstellt und gespeichert.";
-						} else {
-							echo "Fehler beim Erstellen und Speichern der XML-Datei";
-						}
+					if ($resultSave===true){
+						echo ($wdp->printXML("./world_data.xml", "./world_data_xsl.xsl"));
+					}
+					else{
+						echo "XML Document konnte nicht gespeichert werden."; 
+					}
+					
 				?>
 
 				<p id="showHide2">
