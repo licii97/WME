@@ -24,7 +24,7 @@ csv()
 .fromFile(csvFilePath)
 .then((jsonObj)=>{
     console.log(jsonObj);
-    csvToJsonArray = jsonObj;
+    csvToJsonObj = jsonObj;
 
 })
 
