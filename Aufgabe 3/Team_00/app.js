@@ -35,6 +35,14 @@ const jsonArray = await csv().fromFile(csvFilePath);
 ********************** handle HTTP METHODS ***********************
 **************************************************************************/
 
+$id = $_GET["id"];
+$range = $_GET["range"];
+
+//jetzt muss man wahrscheinlich irgendwo im json objekt den scheiß suchen mit id und range & das zurückgeben
+// also echo: "<table>";
+// echo "<td>id = $id</td>";
+// nur bsp
+
 
 // DO NOT CHANGE!
 // bind server to port
