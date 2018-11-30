@@ -15,7 +15,6 @@ app.use( express.static( path.join(__dirname, "public") ) );
 
 // END DO NOT CHANGE!
 
-
 //https://www.npmjs.com/package/csvtojson
 var csvToJsonObj = {};
 const csvFilePath='./world_data.csv';
@@ -25,19 +24,9 @@ csv().fromFile(csvFilePath)
 				csvToJsonObj = jsonObj;
 				console.log(jsonObj);
 			})
-
 /**************************************************************************
 ********************** handle HTTP METHODS ***********************
 **************************************************************************/
-
-/*$id = $_GET["id"];
-$range = $_GET["range"];*/
-
-//jetzt muss man wahrscheinlich irgendwo im json objekt den scheiß suchen mit id und range & das zurückgeben
-// also echo: "<table>";
-// echo "<td>id = $id</td>";
-// nur bsp
-
 
 // DO NOT CHANGE!
 // bind server to port
@@ -89,9 +78,9 @@ app.post('/items', function (req, res) {
 })
 
 app.delete('/items', function (req, res) {
-	csvToJsonObj.pop();
-	res.send(csvToJsonObj);
-	//res.send('Deleted last country: {name}!');
+	const deletedCountry = csvToJsonObj.pop()
+	//res.send(csvToJsonObj);
+	res.send('Deleted last country: ' + deletedCountry[name].value() +'!');
 })
 
 app.delete('/items/:id', function (req, res) {
