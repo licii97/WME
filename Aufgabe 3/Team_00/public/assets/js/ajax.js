@@ -21,7 +21,18 @@ $("add_submit").click(function(){
 	$.get("app.js"/*?? bin mir nicht sicher*/, {id: country_id, range: country_id_range} , function(data){/* Display the returned data in browser*/}); 
 	//die funct. ist das, was der server mit den ermittelten daten machen soll. "data" sind dann genau diese ermittelten daten
 
+	$.ajax({
+		type: "GET",
+		url: "http://localhost:3000/items/id1/id2", //keine ahnung, ob das richtig ist
+		async: true,
+		success: function(data) {
+		// Handle returned data
+		}, error: function(jqXHR, text, err) {
+		// Handle error if occured
+		}
 	});
+});
+
 $("show_selected_prop").click(function(){
 		//soll das machen, was getan werden soll, wenn "show" geklickt wird
 	});

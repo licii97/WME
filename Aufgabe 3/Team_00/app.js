@@ -23,6 +23,7 @@ const csv=require('csvtojson');
 csv().fromFile(csvFilePath)
 			.then(function(jsonObj){
 				csvToJsonObj = jsonObj;
+				console.log(jsonObj);
 			})
 
 /**************************************************************************
@@ -47,40 +48,58 @@ var server = app.listen(3000, function () {
 });
 
 app.get('/items', function(req, res) {
-		res.contentType('application/json'); //default ist text/html, deswegen extra angeben
-		res.send(csvToJsonObj); //gibt das jsonObj zurück, also die daten, die könnte man jetzt vorher noch bearbeiten, also irgendwas löschen oder so
+		res.contentType('application/json');
+		res.send(csvToJsonObj);
 })
 
-app.get('/items/:id', function (req, res) { // wenn man var haben möchte, dann muss noch ein : davor
-	res.contentType('application/json');	
-	var id = req.params.id;
-	//aus dem jsob das passende ding raussuchen
+app.get('/items/:id', function (req, res) {
+	res.contentType('application/json');
+	const id = req.params.id;
+	const filteredJson = csvToJsonObj.filter(country => country['id'] === id);
+	res.send(filteredJson);
 })
 
 app.get('/items/:id1/:id2', function (req, res) {
-	res.contentType('application/json');	
-	var id_1 = req.params.id1;
-	var id_2 = req.params.id2;
+	const id_1 = req.params.id1;
+	const id_2 = req.params.id2;
+
+	if (id_1 <= id_2){
+		res.contentType('application/json');
+	 	var filteredJson = csvToJsonObj.filter(country => country['id'] >= id_1);
+		filteredJson = filteredJson.filter(country => country['id'] <= id_2);
+		res.send(filteredJson);
+	}
+	else {
+		res.send('Range not possible!');
+	}
 })
 
 app.get('/properties', function (req, res) {
-	res.contentType('application/json');	
+	res.contentType('application/json');
 })
 
 app.get('/properties/:num', function (req, res) {
-	res.contentType('application/json');	
+	res.contentType('application/json');
 	var num = req.params.num;
 })
 
 app.post('/items', function (req, res) {
+//evtl "push()" benutzen
 	res.send('Added country {name} to list!');
 })
 
 app.delete('/items', function (req, res) {
-	res.send('Deleted last country: {name}!');
+	csvToJsonObj.pop();
+	res.send(csvToJsonObj);
+	//res.send('Deleted last country: {name}!');
 })
 
-app.delete('/items/:id', function (res, req) {
-	res.send('Item {id} deleted successfully.');
-	res.send('No such id {id} in database');
+app.delete('/items/:id', function (req, res) {
+	res.contentType('application/json');
+	var id = req.params.id;
+	csvToJsonObj = csvToJsonObj.filter(country => country['id'] != id);
+	res.send(csvToJsonObj);
+
+	//res.send('Item {id} deleted successfully.');
+	//res.send('No such id {id} in database');
 })
