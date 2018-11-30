@@ -95,11 +95,13 @@ app.delete('/items', function (req, res) {
 })
 
 app.delete('/items/:id', function (req, res) {
-	res.contentType('application/json');
 	var id = req.params.id;
-	csvToJsonObj = csvToJsonObj.filter(country => country['id'] != id);
-	res.send(csvToJsonObj);
-
-	//res.send('Item {id} deleted successfully.');
-	//res.send('No such id {id} in database');
+	const elemExists = csvToJsonObj.find(country => country.id === id);
+	if (elemExists == undefined){
+		res.send('No such id ' + id + ' in database');
+	}
+	else {
+		csvToJsonObj = csvToJsonObj.filter(country => country['id'] != id);
+		res.send('Item ' + id + ' deleted successfully.');
+	}
 })
