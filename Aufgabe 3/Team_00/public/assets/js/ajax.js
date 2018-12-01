@@ -1,56 +1,51 @@
-/*xmlhttp=new XMLHttpRequest();
-xmlhttp.responseText; //-> das vom server gelieferte ergebnis wird da ankommen und man kann sie so weiterverarbeiten
-if (xmlhttp.readyState==4 && xmlhttp.status==200) //-> abfrage, ob alles geklappt hat auf dem server
-xmlhttp.open("GET","..."+inhalt,true); // aufruf des programms auf der serverseite
-																			// ich nehme an für "..." muss sowas wie "app.js?q=" oder "index.html/bla", ach keine ahnung :D
-xmlhttp.send();*/
-
+function pad(n) {
+  n = n + '';
+  return n.length >= 3 ? n : new Array(3 - n.length + 1).join(0) + n;
+}
 //inspiriert durch : https://www.tutorialrepublic.com/jquery-tutorial/jquery-ajax-get-and-post-requests.php
+$("#add_submit").click(function(e){
+	e.preventDefault();
 
-$("#add_submit").click(function(){
-	var country_id = $("#country_filter_id").val();
+	var country_id = pad($("#country_filter_id").val());
 	var country_id_range = $("#country_filter_range").val();
 
+	const rangeID = country_id_range.split("-");
+	const id1 = pad(rangeID[0]);
+	const id2 = pad(rangeID[1]);
 
-	if (country_id_range != "" || country_id_range != null) {
-		const rangeID = country_id_range.split("-");
-		const id1 = rangeID[0];
-		const id2 = rangeID[1];
+	var url = '';
 
-		//console.log("http://localhost:3000/items/" + id1 + "/" + id2);
-		$.ajax({
+	if (country_id_range) {
+		url = id1 + "/" + id2;
+	}
+	else {
+		url = country_id;
+	}
+
+	$.ajax({
 			type: "GET",
-			url: "http://localhost:3000/items/001/003",// + id1 + "/" + id2,
+			url: 'http://localhost:3000/items/' + url,
 			async: true,
+			dataType: 'json',
 			success: function(data) {
-				console.log("works");
-				$("#table_body").innerHTML = "Paragraph changed!";
-				// alten tabelleninhalt löschen
-				// tabelle neu befüllen
-				// data = jsonObj
+				$("#table_body").html("");
+				$.each(data, function(index, element){
+					$("#table_body").append("<tr id=" + index + "></tr>");
+					$("#" + index).append("<td>" + element["id"] + "</td>");
+					$("#" + index).append("<td>" + element["name"] + "</td>");
+					$("#" + index).append("<td>" + element["birth_rate_per_1000"] + "</td>");
+					$("#" + index).append("<td>" + element["cell_phones_per_100"] + "</td>");
+					$("#" + index).append("<td>" + element["children_per_woman"] + "</td>");
+					$("#" + index).append("<td>" + element["electricity_consumption_per_capita"] + "</td>");
+					$("#" + index).append("<td>" + element["internet_user_per_100"] + "</td>");
+				});
 			}, error: function(jqXHR, text, err) {
-			// Handle error if occured
-			//console.log("error");
-			console.log(err);
+			 //console.log(err);
 			}
 		});
-	}
-	else if (country_id != "" || country_id != null){
-		$.ajax({
-			type: "GET",
-			url: "http://localhost:3000/items/" + country_id,
-			async: true,
-			success: function(data) {
-			// alten tabelleninhalt löschen
-			// tabelle neu befüllen
-			// data = jsonObj
-			}, error: function(jqXHR, text, err) {
-			// Handle error if occured
-			}
-		});
-	}
 });
 
+/*
 $("show_selected_prop").click(function(){
 		//soll das machen, was getan werden soll, wenn "show" geklickt wird
 	});
@@ -67,3 +62,4 @@ $("rm_submit").click(function(){
 	var country_delete_id = $("#country_delete_id").val();
 		//soll das machen, was getan werden soll, wenn "remove country" geklickt wird
 	});
+*/
