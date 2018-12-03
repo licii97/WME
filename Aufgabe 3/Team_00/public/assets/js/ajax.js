@@ -2,7 +2,23 @@ function pad(n) {
   n = n + '';
   return n.length >= 3 ? n : new Array(3 - n.length + 1).join(0) + n;
 }
-//inspiriert durch : https://www.tutorialrepublic.com/jquery-tutorial/jquery-ajax-get-and-post-requests.php
+
+$('document').ready(function(e){
+  $.ajax({
+			type: "GET",
+			url: 'http://localhost:3000/items',
+			async: true,
+			dataType: 'json',
+			success: function(data) {
+				$("#prop_selection").html("");
+          $.each(data[0], function(index, element){
+            $("#prop_selection").append("<option value=&quot;" + index + "&quot;>" + index + "</option>");
+  				});
+			}, error: function(jqXHR, text, err) {
+			}
+		});
+});
+
 $("#add_submit").click(function(e){
 	e.preventDefault();
 
@@ -16,15 +32,15 @@ $("#add_submit").click(function(e){
 	var url = '';
 
 	if (country_id_range) {
-		url = id1 + "/" + id2;
+		url = "/" + id1 + "/" + id2;
 	}
-	else {
-		url = country_id;
+	else if (country_id){
+		url = "/" + country_id;
 	}
 
 	$.ajax({
 			type: "GET",
-			url: 'http://localhost:3000/items/' + url,
+			url: 'http://localhost:3000/items' + url,
 			async: true,
 			dataType: 'json',
 			success: function(data) {
@@ -40,12 +56,11 @@ $("#add_submit").click(function(e){
 					$("#" + index).append("<td>" + element["internet_user_per_100"] + "</td>");
 				});
 			}, error: function(jqXHR, text, err) {
-			 //console.log(err);
 			}
 		});
 });
 
-/*
+
 $("show_selected_prop").click(function(){
 		//soll das machen, was getan werden soll, wenn "show" geklickt wird
 	});
@@ -62,4 +77,3 @@ $("rm_submit").click(function(){
 	var country_delete_id = $("#country_delete_id").val();
 		//soll das machen, was getan werden soll, wenn "remove country" geklickt wird
 	});
-*/
