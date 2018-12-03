@@ -17,6 +17,27 @@ $('document').ready(function(e){
 			}, error: function(jqXHR, text, err) {
 			}
 		});
+
+    $.ajax({
+  			type: "GET",
+  			url: 'http://localhost:3000/items',
+  			async: true,
+  			dataType: 'json',
+  			success: function(data) {
+  				$("#table_body").html("");
+  				$.each(data, function(index, element){
+  					$("#table_body").append("<tr id=" + index + "></tr>");
+  					$("#" + index).append("<td>" + element["id"] + "</td>");
+  					$("#" + index).append("<td>" + element["name"] + "</td>");
+  					$("#" + index).append("<td>" + element["birth_rate_per_1000"] + "</td>");
+  					$("#" + index).append("<td>" + element["cell_phones_per_100"] + "</td>");
+  					$("#" + index).append("<td>" + element["children_per_woman"] + "</td>");
+  					$("#" + index).append("<td>" + element["electricity_consumption_per_capita"] + "</td>");
+  					$("#" + index).append("<td>" + element["internet_user_per_100"] + "</td>");
+  				});
+  			}, error: function(jqXHR, text, err) {
+  			}
+  		});
 });
 
 $("#add_submit").click(function(e){
@@ -73,7 +94,44 @@ $("add_submit").click(function(){
 	var country_cellphone = $("#country_cellphone").val();
 		//soll das machen, was getan werden soll, wenn "add country" geklickt wird
 	});
-$("rm_submit").click(function(){
-	var country_delete_id = $("#country_delete_id").val();
-		//soll das machen, was getan werden soll, wenn "remove country" geklickt wird
+$("#rm_submit").click(function(e){
+  console.log("hi");
+  e.preventDefault();
+	var country_delete_id = pad($("#country_delete_id").val());
+
+  var url = '';
+
+  if (country_delete_id != 000){
+    url = '/' + country_delete_id;
+  }
+  $.ajax({
+			type: "DELETE",
+			url: 'http://localhost:3000/items' + url,
+			async: true,
+      dataType: 'text',
+			success: function(data) {
+        alert(data);
+        $.ajax({
+      			type: "GET",
+      			url: 'http://localhost:3000/items',
+      			async: true,
+      			dataType: 'json',
+      			success: function(data) {
+      				$("#table_body").html("");
+      				$.each(data, function(index, element){
+      					$("#table_body").append("<tr id=" + index + "></tr>");
+      					$("#" + index).append("<td>" + element["id"] + "</td>");
+      					$("#" + index).append("<td>" + element["name"] + "</td>");
+      					$("#" + index).append("<td>" + element["birth_rate_per_1000"] + "</td>");
+      					$("#" + index).append("<td>" + element["cell_phones_per_100"] + "</td>");
+      					$("#" + index).append("<td>" + element["children_per_woman"] + "</td>");
+      					$("#" + index).append("<td>" + element["electricity_consumption_per_capita"] + "</td>");
+      					$("#" + index).append("<td>" + element["internet_user_per_100"] + "</td>");
+      				});
+      			}, error: function(jqXHR, text, err) {
+      			}
+      		});
+			}, error: function(jqXHR, text, err) {
+			}
+		});
 	});

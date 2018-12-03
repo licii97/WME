@@ -78,9 +78,8 @@ app.post('/items', function (req, res) {
 })
 
 app.delete('/items', function (req, res) {
-	const deletedCountry = csvToJsonObj.pop()
-	//res.send(csvToJsonObj);
-	res.send('Deleted last country: ' + deletedCountry[name].value() +'!');
+	const deletedCountry = csvToJsonObj.pop();
+	res.send('Deleted last country: ' + deletedCountry["id"] +'!');
 })
 
 app.delete('/items/:id', function (req, res) {
