@@ -42,10 +42,15 @@ app.get('/items', function(req, res) {
 })
 
 app.get('/items/:id', function (req, res) {
-	res.contentType('application/json');
 	const id = req.params.id;
 	const filteredJson = csvToJsonObj.filter(country => country['id'] === id);
-	res.send(filteredJson);
+
+	if (filteredJson.length <1){
+		res.send("No such id "+id +" in database.");
+	}else{
+		res.contentType('application/json');
+		res.send(filteredJson);
+	}
 })
 
 app.get('/items/:id1/:id2', function (req, res) {
@@ -64,22 +69,65 @@ app.get('/items/:id1/:id2', function (req, res) {
 })
 
 app.get('/properties', function (req, res) {
+	let properties = [];
+	for (var index in csvToJsonObj[0]){
+		console.log(index);
+		properties.push(index);
+	}
 	res.contentType('application/json');
+	res.send(properties);
 })
 
 app.get('/properties/:num', function (req, res) {
-	res.contentType('application/json');
 	var num = req.params.num;
+	let property = [];
+	let counter = 0;
+
+	for (var index in csvToJsonObj[0]){
+		counter++;
+		if (num == counter){
+			res.contentType('application/json');
+			property.push(index);
+			res.send(property);
+		}
+	}
+	if(num > counter){
+		res.send("No such property available!");
+	}
+
 })
 
 app.post('/items', function (req, res) {
-//evtl "push()" benutzen
-	res.send('Added country {name} to list!');
+	/*let id1 ="0";
+	let id2 ="0";
+	csvToJsonObj.forEach(function(element){
+		id2 = element['id'];
+		if (id2 > id1) {
+			id1 = id2;
+		}
+	})
+	*/
+	let newCountry = {id:"",
+										name:req.body["name"],
+										birth_rate_per_1000: req.body["birth_rate_per_1000"],
+										cell_phones_per_100: req.body["cell_phones_per_100"],
+										children_per_woman:"-",
+										electricity_consumption_per_capita:"-",
+										gdp_per_capita:"-",
+										gdp_per_capita_growth:"-",
+										inflation_annual:"-",
+										internet_user_per_100:"-",
+										life_expectancy:"-",
+										military_expenditure_percent_of_gdp:"-",
+										gps_lat:"-",
+										gps_long:"-"};
+	csvToJsonObj.push(newCountry);
+	res.send('Added country ' + req.body["name"] + ' to list!');
 })
 
 app.delete('/items', function (req, res) {
 	const deletedCountry = csvToJsonObj.pop();
-	res.send('Deleted last country: ' + deletedCountry["id"] +'!');
+	res.send('Deleted last country: ' + deletedCountry["name"] +'!');
 })
 
 app.delete('/items/:id', function (req, res) {
