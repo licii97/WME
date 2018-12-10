@@ -26,13 +26,13 @@ function getFullTable() {
 $('document').ready(function(e){
   $.ajax({
 			type: "GET",
-			url: 'http://localhost:3000/items',
+			url: 'http://localhost:3000/properties',
 			async: true,
 			dataType: 'json',
 			success: function(data) {
 				$("#prop_selection").html("");
-          $.each(data[0], function(index, element){
-            $("#prop_selection").append("<option value=&quot;" + index + "&quot;>" + index + "</option>");
+          $.each(data, function(index, element){
+            $("#prop_selection").append("<option value=&quot;" + element + "&quot;>" + element + "</option>");
   				});
 			}, error: function(jqXHR, text, err) {
 			}
@@ -63,8 +63,13 @@ $("#add_submit").click(function(e){
 			type: "GET",
 			url: 'http://localhost:3000/items' + url,
 			async: true,
-			dataType: 'json',
+			//dataType: 'json',
 			success: function(data) {
+        console.log("succ");
+        console.log(data);
+        if (data.length == 0){
+          console.log("no such id");
+        }
         $("#table_body").html("");
         $.each(data, function(index, element){
           $("#table_body").append("<tr id=" + index + "></tr>");
@@ -72,8 +77,11 @@ $("#add_submit").click(function(e){
             $("#" + index).append("<td class=&quot" + key +"&quot;>" + value + "</td>");
           })
         });
-			}, error: function(jqXHR, text, err) {
-			}
+			}, error: function(jqXHR, text, err, data) {
+        console.log("err");
+          $('#status').append();
+          document.getElementById('status').style.backgroundColor = "red";
+        }
 		});
 });
 

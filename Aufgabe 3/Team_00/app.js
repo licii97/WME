@@ -16,6 +16,12 @@ app.use( express.static( path.join(__dirname, "public") ) );
 // END DO NOT CHANGE!
 
 //https://www.npmjs.com/package/csvtojson
+
+function pad(n) {
+  n = n + '';
+  return n.length >= 3 ? n : new Array(3 - n.length + 1).join(0) + n;
+}
+
 var csvToJsonObj = {};
 const csvFilePath='./world_data.csv';
 const csv=require('csvtojson');
@@ -43,13 +49,15 @@ app.get('/items', function(req, res) {
 
 app.get('/items/:id', function (req, res) {
 	const id = req.params.id;
-	const filteredJson = csvToJsonObj.filter(country => country['id'] === id);
+	let filteredJson = [];
+	filteredJson = csvToJsonObj.filter(country => country['id'] === id);
 
-	if (filteredJson.length <1){
-		res.send("No such id "+id +" in database.");
-	}else{
+	if (filteredJson != []){
 		res.contentType('application/json');
 		res.send(filteredJson);
+
+	}else{
+		res.send("No such id " + id + " in database.");
 	}
 })
 
@@ -98,16 +106,19 @@ app.get('/properties/:num', function (req, res) {
 })
 
 app.post('/items', function (req, res) {
-	/*let id1 ="0";
+	let id1 ="0";
 	let id2 ="0";
 	csvToJsonObj.forEach(function(element){
 		id2 = element['id'];
 		if (id2 > id1) {
 			id1 = id2;
 		}
-	})
-	*/
-	let newCountry = {id:"",
+	});
+
+	id1 = parseInt(id1);
+	id1++;
+	const newCountryId = pad(id1);
+	let newCountry = {id:newCountryId,
 										name:req.body["name"],
 										birth_rate_per_1000: req.body["birth_rate_per_1000"],
 										cell_phones_per_100: req.body["cell_phones_per_100"],
