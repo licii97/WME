@@ -125,7 +125,10 @@ $("#ad_submit").click(function(e){
       contentType: "application/json",
       dataType: 'text',
 			success: function(data) {
-        alert(data);
+        $("#status_new_country").append("<p> Added country " + country_name + " to list!</p>");
+        var x = document.getElementById('status_new_country');
+        x.style.backgroundColor = "lightgreen";
+        setTimeout(function(){$('#status_new_country').html("");}, 2000);
         getFullTable();
 			}, error: function(jqXHR, text, err) {
         console.log(err);
@@ -149,7 +152,27 @@ $("#rm_submit").click(function(e){
 			async: true,
       dataType: 'text',
 			success: function(data) {
-        alert(data);
+        var list = data.split(" ");
+        switch(list[0]){
+          case "Deleted":
+          $("#status_deleted_country").append("<p>" + data + "</p>");
+          var x = document.getElementById('status_deleted_country');
+          x.style.backgroundColor = "lightgreen";
+          setTimeout(function(){$('#status_deleted_country').html("");}, 2000);
+          break;
+          case "Item":
+          $("#status_deleted_country").append("<p>" + data + "</p>");
+          var x = document.getElementById('status_deleted_country');
+          x.style.backgroundColor = "lightgreen";
+          setTimeout(function(){$('#status_deleted_country').html("");}, 2000);
+          break;
+          case "No":
+          $("#status_deleted_country").append("<p>" + data + "</p>");
+          var x = document.getElementById('status_deleted_country');
+          x.style.backgroundColor = "red";
+          setTimeout(function(){$('#status_deleted_country').html("");}, 2000);break;
+          default: break;
+        }
         getFullTable();
 			}, error: function(jqXHR, text, err) {
 			}
