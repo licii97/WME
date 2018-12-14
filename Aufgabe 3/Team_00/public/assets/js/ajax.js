@@ -94,16 +94,18 @@ $("#add_submit").click(function(e){
 $("#show_selected_prop").click(function(e){
   e.preventDefault();
   var propSelection = document.getElementById("prop_selection");
-  var id = propSelection.options[propSelection.selectedIndex].value;
-
+  //var id = propSelection.options[propSelection.selectedIndex].value;
+  const n = propSelection.selectedIndex + 1;
+  $('#world_data_table tr > *:nth-child('+n +')').show();
 	});
 
 // Sobald auf "Hide" geklickt wird, wird die ausgewählte Property aus der Tabelle gelöscht
 $("#hide_selected_prop").click(function(e){
   e.preventDefault();
   var propSelection = document.getElementById("prop_selection");
-  var id = propSelection.options[propSelection.selectedIndex].value;
-
+  //var id = propSelection.options[propSelection.selectedIndex].value;
+  const n = propSelection.selectedIndex + 1;
+  $('#world_data_table tr > *:nth-child('+n +')').hide();
 	});
 
 // Soabld auf "Add COuntry" geklickt wird, werden die Daten an den Server geschickt und hinzgefügt
