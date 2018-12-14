@@ -42,6 +42,8 @@ $('document').ready(function(e){
 //sobald auf "Filter Countries" geklickt wird, wird der passende Tabelleninhalt angefragt und dargestellt
 $("#add_submit").click(function(e){
 	e.preventDefault();
+  $("#status_id").html("");
+  $("#status_range").html("");
 
 	var country_id = pad($("#country_filter_id").val());
 	var country_id_range = $("#country_filter_range").val();
@@ -63,12 +65,13 @@ $("#add_submit").click(function(e){
 			type: "GET",
 			url: 'http://localhost:3000/items' + url,
 			async: true,
-			//dataType: 'json',
+			dataType: 'json',
 			success: function(data) {
-        console.log("succ");
         console.log(data);
         if (data.length == 0){
-          console.log("no such id");
+          $("#status_id").append("<p> No such id " + country_id + " in database.</p>");
+          var x = document.getElementById('status_id');
+          x.style.backgroundColor = "red";
         }
         $("#table_body").html("");
         $.each(data, function(index, element){
@@ -77,11 +80,13 @@ $("#add_submit").click(function(e){
             $("#" + index).append("<td class=&quot" + key +"&quot;>" + value + "</td>");
           })
         });
-			}, error: function(jqXHR, text, err, data) {
-        console.log("err");
-          $('#status').append();
-          document.getElementById('status').style.backgroundColor = "red";
+			}, error: function(jqXHR, text, err) {
+        if (country_id_range){
+          $("#status_range").append("<p> Range not possible.</p>");
+          var x = document.getElementById('status_range');
+          x.style.backgroundColor = "red";
         }
+      }
 		});
 });
 
