@@ -1,3 +1,3 @@
-Aufgabe 4
+Aufgabe 3
 Team 3 
 Verona Kolpe & Felicitas Schmelz 
